@@ -1,0 +1,82 @@
+<div class="mat-elevation-z8" id="main-div">
+
+  <div id="filter-fields-and-add-button">
+    <mat-form-field class="filter-input-field">
+      <label>
+        <input (keyup)="applyCompetitionIdFilter($event)" matInput placeholder="Competition ID Filter">
+      </label>
+    </mat-form-field>
+
+    <mat-form-field class="filter-input-field">
+      <label>
+        <input (keyup)="applyAthleteIdFilter($event)" matInput placeholder="Athlete ID Filter">
+      </label>
+    </mat-form-field>
+
+<!--    <mat-form-field class="filter-input-field">-->
+<!--      <label>-->
+<!--        <input (keyup)="applyMoneyContributionFilter($event)" matInput placeholder="Money Contribution Filter">-->
+<!--      </label>-->
+<!--    </mat-form-field>-->
+
+    <ng-container>
+      <button (click)="addParticipation()" id="add-button" mat-icon-button>
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-container>
+  </div>
+
+  <table [dataSource]="dataSource" mat-table matSort>
+
+    <ng-container matColumnDef="competitionId">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Competition ID</th>
+      <td *matCellDef="let participation" mat-cell> {{participation.competitionId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="competitionName">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Competition Name</th>
+      <td *matCellDef="let participation" mat-cell> {{participation.competitionName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="athleteId">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Athlete ID</th>
+      <td *matCellDef="let participation" mat-cell> {{participation.athleteId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="athleteName">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Athlete Name</th>
+      <td *matCellDef="let participation" mat-cell> {{participation.athleteName}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="rank">
+      <th *matHeaderCellDef mat-header-cell mat-sort-header>Rank</th>
+      <td *matCellDef="let participation" mat-cell> {{participation.rank}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deleteButton">
+      <th *matHeaderCellDef class="button-column" mat-header-cell></th>
+      <td *matCellDef="let participation" mat-cell>
+        <button (click)="deleteParticipation(participation)" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="updateButton">
+      <th *matHeaderCellDef class="button-column" mat-header-cell></th>
+      <td *matCellDef="let participation" mat-cell>
+        <button (click)="updateParticipation(participation)" mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+
+</div>

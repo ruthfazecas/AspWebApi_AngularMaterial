@@ -1,0 +1,42 @@
+<div id="update-participation-wrapper">
+
+  <h1 mat-dialog-title>Update Participation</h1>
+
+  <div mat-dialog-content>
+    <!--    <mat-form-field>-->
+    <!--      <mat-label>Competition ID:</mat-label>-->
+    <!--      <label>-->
+    <!--        <input [(ngModel)]="participation.competitionId" matInput type="number">-->
+    <!--      </label>-->
+    <!--    </mat-form-field>-->
+
+
+    <mat-label>Competition ID:</mat-label>
+    <span>{{participation.competitionId}}</span>
+
+    <br><br>
+
+    <mat-label>Athlete ID:</mat-label>
+    <span>{{participation.athleteId}}</span>
+
+
+    <!--    <mat-form-field>-->
+    <!--      <mat-label>Athlete ID</mat-label>-->
+    <!--      <label>-->
+    <!--        <input [(ngModel)]="participation.athleteId" matInput type="number">-->
+    <!--      </label>-->
+    <!--    </mat-form-field>-->
+    <mat-form-field>
+      <mat-label>Rank</mat-label>
+      <label>
+        <input [(ngModel)]="participation.rank" matInput type="number">
+      </label>
+    </mat-form-field>
+  </div>
+
+</div>
+
+<div id="update-participation-dialog-buttons-div" mat-dialog-actions>
+  <button [mat-dialog-close]="participation" cdkFocusInitial mat-button>Update</button>
+  <button (click)="onNoClick()" mat-button>Cancel</button>
+</div>
